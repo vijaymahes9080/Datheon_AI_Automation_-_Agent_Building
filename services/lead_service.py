@@ -205,9 +205,33 @@ class LeadService:
         db.commit()
         db.refresh(lead)
 
-        return {
-            "lead_id": lead.id,
-            "routing_status": lead.routing_status,
-            "airtable": airtable_res,
-            "slack": slack_res,
-        }
+    def get_leads(
+        self,
+        db: Session,
+        priority: Optional[str] = None,
+        qualification_status: Optional[str] = None,
+        search: Optional[str] = None,
+        limit: int = 50,
+        offset: int = 0,
+    ) -> List[LeadRecord]:
+        """Query leads with multi-field filtering, search, and pagination."""
+        query = db.query(LeadRecord)
+
+        if priority:
+            query = query.filter(LeadRecord.priority == priority.upper())
+        if qualification_status:
+            query = query.filter(LeadRecord.qualification_status == qualification_status.upper())
+        if search:
+            search_pattern = f"%{search.strip()}%"
+            query = query.filter(
+                (LeadRecord.company_name.ilike(search_pattern))
+                | (LeadRecord.contact_name.ilike(search_pattern))
+                | (LeadRecord.contact_email.ilike(search_pattern))
+            )
+
+        return query.order_by(LeadRecord.created_at.desc()).offset(offset).limit(limit).all()
+
+    def get_lead_by_id(self, lead_id: str, db: Session) -> Optional[LeadRecord]:
+        """Retrieve lead by ID."""
+        return db.query(LeadRecord).filter(LeadRecord.id == lead_id).first()
+
