@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORBIT AI Operations Studio | Autonomous Workforce & Automation</title>
+  <meta name="description" content="Enterprise operations workspace for AI-powered lead qualification, email intelligence, invoice reconciliation, and multi-agent business orchestration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <span class="logo-orb"></span>
+          <span class="logo-ring"></span>
+        </div>
+        <div class="brand-text">
+          <h1>ORBIT</h1>
+          <span class="brand-tag">Operations Studio v3.0</span>
+        </div>
+      </div>
+
+      <div class="system-status-pill">
+        <span class="status-dot pulsing"></span>
+        <span class="status-label">Workforce Active</span>
+        <span class="mode-badge" id="globalModeBadge">DEMO MODE</span>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-section-label">OPERATIONS</div>
+        <button class="nav-item active" data-tab="tab-overview" id="nav-overview">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Operations Overview</span>
+        </button>
+
+        <div class="nav-section-label">FOUR WORKSPACES</div>
+        <button class="nav-item" data-tab="tab-leads" id="nav-leads">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+          <span>Lead Intelligence</span>
+          <span class="nav-badge" id="badgeLeadsCount">0</span>
+        </button>
+        <button class="nav-item" data-tab="tab-support" id="nav-support">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Support Intelligence</span>
+          <span class="nav-badge alert" id="badgeSupportCount">0</span>
+        </button>
+        <button class="nav-item" data-tab="tab-invoices" id="nav-invoices">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Invoice Intelligence</span>
+          <span class="nav-badge" id="badgeInvoicesCount">0</span>
+        </button>
+        <button class="nav-item" data-tab="tab-orchestration" id="nav-orchestration">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>Enterprise Orchestration</span>
+        </button>
+
+        <div class="nav-section-label">GOVERNANCE & PLATFORM</div>
+        <button class="nav-item" data-tab="tab-workflows" id="nav-workflows">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <span>Workflow Studio</span>
+        </button>
+        <button class="nav-item" data-tab="tab-agents" id="nav-agents">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Agent Registry (10)</span>
+        </button>
+        <button class="nav-item" data-tab="tab-approvals" id="nav-approvals">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Approval Center</span>
+          <span class="nav-badge pending" id="badgePendingApprovals">0</span>
+        </button>
+        <button class="nav-item" data-tab="tab-history" id="nav-history">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Execution History</span>
+        </button>
+        <button class="nav-item" data-tab="tab-integrations" id="nav-integrations">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Integration Settings</span>
+        </button>
+        <button class="nav-item" data-tab="tab-docs" id="nav-docs">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          <span>Documentation & API</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/docs" target="_blank" class="footer-link">OpenAPI Spec &rarr;</a>
+        <div class="footer-meta">Delivered for Datheon AI Evaluation</div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Content Area -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-header">
+        <div class="header-breadcrumbs">
+          <span class="crumb-root">ORBIT Studio</span>
+          <span class="crumb-separator">/</span>
+          <span class="crumb-active" id="currentViewTitle">Operations Overview</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary btn-sm" id="btnRefreshData">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Refresh Telemetry</span>
+          </button>
+          <button class="btn btn-primary btn-sm" id="btnRunDemoSimulation">
+            <span>⚡ Seed Repeatable Demo</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- TAB 1: OPERATIONS OVERVIEW -->
+      <section class="tab-pane active" id="tab-overview">
+        <div class="overview-hero">
+          <div class="hero-content">
+            <h2>Operations Command Center</h2>
+            <p>Unified telemetry, human governance gates, and autonomous agent supervision across the four business modules.</p>
+          </div>
+          <div class="hero-pills">
+            <div class="telemetry-pill">
+              <span class="pill-label">SLA Processing Target</span>
+              <span class="pill-val">&lt; 10.0s</span>
+            </div>
+            <div class="telemetry-pill">
+              <span class="pill-label">Safety Mode</span>
+              <span class="pill-val text-cyan">Draft-Only Enforced</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 KPI Metric Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card" data-nav="tab-leads">
+            <div class="kpi-header">
+              <span class="kpi-title">Inbound Leads</span>
+              <span class="kpi-icon leads">👥</span>
+            </div>
+            <div class="kpi-value" id="kpiTotalLeads">0</div>
+            <div class="kpi-sub" id="kpiQualifiedLeads">0 Qualified (0%)</div>
+          </div>
+
+          <div class="kpi-card" data-nav="tab-support">
+            <div class="kpi-header">
+              <span class="kpi-title">Support Inbox</span>
+              <span class="kpi-icon support">✉️</span>
+            </div>
+            <div class="kpi-value" id="kpiTotalSupport">0</div>
+            <div class="kpi-sub" id="kpiUrgentSupport">0 Urgent Incidents</div>
+          </div>
+
+          <div class="kpi-card" data-nav="tab-invoices">
+            <div class="kpi-header">
+              <span class="kpi-title">Invoices Processed</span>
+              <span class="kpi-icon invoices">📄</span>
+            </div>
+            <div class="kpi-value" id="kpiTotalInvoices">0</div>
+            <div class="kpi-sub" id="kpiDiscrepancies">0 Flagged Discrepancies</div>
+          </div>
+
+          <div class="kpi-card" data-nav="tab-orchestration">
+            <div class="kpi-header">
+              <span class="kpi-title">Verified Revenue</span>
+              <span class="kpi-icon revenue">💳</span>
+            </div>
+            <div class="kpi-value" id="kpiVerifiedRevenue">$0.00</div>
+            <div class="kpi-sub" id="kpiActiveProjects">0 Active Onboarded Projects</div>
+          </div>
+
+          <div class="kpi-card" data-nav="tab-approvals">
+            <div class="kpi-header">
+              <span class="kpi-title">Approval Gates</span>
+              <span class="kpi-icon approvals">🛡️</span>
+            </div>
+            <div class="kpi-value text-amber" id="kpiPendingApprovals">0</div>
+            <div class="kpi-sub">Human Reviews Pending</div>
+          </div>
+
+          <div class="kpi-card" data-nav="tab-history">
+            <div class="kpi-header">
+              <span class="kpi-title">System Health</span>
+              <span class="kpi-icon health">🚀</span>
+            </div>
+            <div class="kpi-value text-green" id="kpiSystemHealth">100%</div>
+            <div class="kpi-sub" id="kpiAvgLatency">Avg Latency: 0ms</div>
+          </div>
+        </div>
+
+        <!-- Operations Layout -->
+        <div class="dashboard-columns">
+          <div class="column-panel">
+            <div class="panel-header">
+              <h3>Active Workforce Modules</h3>
+              <span class="panel-tag">Modular Architecture</span>
+            </div>
+            <div class="modules-list">
+              <div class="module-item">
+                <div class="module-status-dot active"></div>
+                <div class="module-info">
+                  <h4>Project 1: Lead Intelligence & Revenue Routing</h4>
+                  <p>Capture &rarr; Validate &rarr; Normalize &rarr; Qualify &rarr; Persist &rarr; Route &rarr; Notify &rarr; Audit</p>
+                </div>
+                <button class="btn btn-outline btn-xs" onclick="switchTab('tab-leads')">Open &rarr;</button>
+              </div>
+              <div class="module-item">
+                <div class="module-status-dot active"></div>
+                <div class="module-info">
+                  <h4>Project 2: Customer Support & Email Intelligence</h4>
+                  <p>Receive &rarr; Classify &rarr; Assess &rarr; Retrieve &rarr; Draft &rarr; Review &rarr; Label &rarr; Audit</p>
+                </div>
+                <button class="btn btn-outline btn-xs" onclick="switchTab('tab-support')">Open &rarr;</button>
+              </div>
+              <div class="module-item">
+                <div class="module-status-dot active"></div>
+                <div class="module-info">
+                  <h4>Project 3: Invoice Intelligence & Financial Operations</h4>
+                  <p>Upload &rarr; Inspect &rarr; Extract &rarr; Validate &rarr; Reconcile &rarr; Approve &rarr; Export &rarr; Audit</p>
+                </div>
+                <button class="btn btn-outline btn-xs" onclick="switchTab('tab-invoices')">Open &rarr;</button>
+              </div>
+              <div class="module-item">
+                <div class="module-status-dot active"></div>
+                <div class="module-info">
+                  <h4>Project 4: Enterprise Multi-Agent Orchestration</h4>
+                  <p>Intake &rarr; MSA Drafting &rarr; Stripe Verification &rarr; Slack Channels &rarr; Executive Digest</p>
+                </div>
+                <button class="btn btn-outline btn-xs" onclick="switchTab('tab-orchestration')">Open &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column-panel">
+            <div class="panel-header">
+              <h3>Live Activity Feed</h3>
+              <span class="panel-tag">Audit Stream</span>
+            </div>
+            <div class="activity-feed" id="recentActivityFeed">
+              <div class="feed-empty">No activity logs recorded yet. Run a simulation or submit data to start.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: LEAD INTELLIGENCE -->
+      <section class="tab-pane" id="tab-leads">
+        <div class="pane-header">
+          <div>
+            <h2>Project 1: Lead Intelligence & Revenue Routing</h2>
+            <p>Capture prospects, evaluate business fit with AI, synthesize talking points, and route to Airtable & Slack.</p>
+          </div>
+          <div class="pane-actions">
+            <button class="btn btn-secondary btn-sm" id="btnFillSampleLead">Fill Sample Lead</button>
+          </div>
+        </div>
+
+        <div class="two-col-grid">
+          <!-- Submission Form -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Lead Intake Form</h3>
+              <span class="badge badge-info">Web Form & Webhook</span>
+            </div>
+            <form id="formLeadSubmit" class="form-grid">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="leadContactName">Contact Name *</label>
+                  <input type="text" id="leadContactName" required placeholder="Sarah Jenkins">
+                </div>
+                <div class="form-group">
+                  <label for="leadContactEmail">Business Email *</label>
+                  <input type="email" id="leadContactEmail" required placeholder="s.jenkins@retailgrowth.com">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="leadCompanyName">Company Name *</label>
+                  <input type="text" id="leadCompanyName" required placeholder="Retail Growth Dynamics">
+                </div>
+                <div class="form-group">
+                  <label for="leadCompanySize">Company Size *</label>
+                  <select id="leadCompanySize">
+                    <option value="10-50">10-50 employees</option>
+                    <option value="50-100" selected>50-100 employees</option>
+                    <option value="100-250">100-250 employees</option>
+                    <option value="500+">500+ Enterprise</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="leadBudget">Operational Budget (USD) *</label>
+                  <input type="number" id="leadBudget" required min="500" value="18500" step="500">
+                </div>
+                <div class="form-group">
+                  <label for="leadTimeline">Target Timeline</label>
+                  <input type="text" id="leadTimeline" value="Immediate / 30 Days">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="leadNeeds">Automation Needs & Pain Points *</label>
+                <textarea id="leadNeeds" rows="3" required placeholder="Describe workflow requirements, platforms (Shopify, Airtable, ERP), and manual bottlenecks..."></textarea>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="leadConsent" checked required>
+                <label for="leadConsent">I confirm explicit marketing and communications consent.</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" id="btnSubmitLead">
+                <span>Process & Route Lead &rarr;</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Evaluation Results & Explanation -->
+          <div class="card" id="leadResultCard">
+            <div class="card-header">
+              <h3>Latest Qualification Analysis</h3>
+              <span class="badge" id="leadResultBadge">Awaiting Input</span>
+            </div>
+            <div class="result-placeholder" id="leadResultPlaceholder">
+              Submit a lead from the form or webhook to observe the 8-stage pipeline, talking points, and routing metrics in real-time.
+            </div>
+            <div class="lead-analysis-content" id="leadAnalysisContent" style="display:none;">
+              <div class="score-display">
+                <div class="score-circle" id="leadScoreCircle">--</div>
+                <div class="score-meta">
+                  <h4 id="leadResultCompany">Company</h4>
+                  <div class="score-tags">
+                    <span class="badge" id="leadPriorityBadge">PRIORITY</span>
+                    <span class="badge" id="leadStatusBadge">STATUS</span>
+                    <span class="text-muted" id="leadLatencyBadge">Latency: 0ms</span>
+                  </div>
+                </div>
+              </div>
+              <div class="analysis-section">
+                <h5>Scoring Rationale</h5>
+                <p id="leadRationaleText">Rationale will appear here.</p>
+              </div>
+              <div class="analysis-section">
+                <h5>Sales Talking Points (AI-Synthesized)</h5>
+                <ul class="bullet-list" id="leadTalkingPointsList"></ul>
+              </div>
+              <div class="analysis-section">
+                <h5>External Routing Handlers</h5>
+                <div class="routing-pills">
+                  <div class="pill" id="airtableRoutePill">Airtable: Pending</div>
+                  <div class="pill" id="slackRoutePill">Slack: Pending</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filterable Leads Table -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3>Captured & Qualified Leads</h3>
+            <div class="table-filters">
+              <input type="text" id="filterLeadSearch" placeholder="Search leads..." class="input-sm">
+              <select id="filterLeadPriority" class="select-sm">
+                <option value="">All Priorities</option>
+                <option value="URGENT">Urgent</option>
+                <option value="HIGH">High</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="LOW">Low</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table" id="tableLeads">
+              <thead>
+                <tr>
+                  <th>Company & Contact</th>
+                  <th>Budget</th>
+                  <th>Score</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Routing</th>
+                  <th>Latency</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyLeads">
+                <tr><td colspan="8" class="text-center text-muted">No leads captured yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: CUSTOMER SUPPORT & EMAIL INTELLIGENCE -->
+      <section class="tab-pane" id="tab-support">
+        <div class="pane-header">
+          <div>
+            <h2>Project 2: Customer Support & Email Intelligence</h2>
+            <p>Classify intent, measure urgency, ground replies in approved operational knowledge, and enforce draft-only safety.</p>
+          </div>
+          <div class="pane-actions">
+            <button class="btn btn-secondary btn-sm" id="btnLoadSupportFixture">Load Reproducible Test Fixture</button>
+          </div>
+        </div>
+
+        <div class="support-layout">
+          <!-- Left: Inbox List -->
+          <div class="card support-inbox-pane">
+            <div class="card-header">
+              <h3>Support Inbox</h3>
+              <span class="badge badge-amber" id="inboxUrgentCount">0 Urgent</span>
+            </div>
+            <div class="inbox-filter-bar">
+              <button class="filter-tab active" data-filter="all">All</button>
+              <button class="filter-tab" data-filter="CRITICAL">Critical</button>
+              <button class="filter-tab" data-filter="BILLING">Billing</button>
+              <button class="filter-tab" data-filter="TECHNICAL_SUPPORT">Tech</button>
+              <button class="filter-tab" data-filter="ESCALATED">Escalated</button>
+            </div>
+            <div class="inbox-list" id="supportInboxList">
+              <div class="text-muted text-center p-4">No tickets in inbox. Click "Load Reproducible Test Fixture" above.</div>
+            </div>
+          </div>
+
+          <!-- Right: Email Detail & Grounded Draft Workspace -->
+          <div class="card support-detail-pane">
+            <div class="card-header">
+              <h3 id="ticketDetailSubject">Select an Email from Inbox</h3>
+              <span class="badge" id="ticketDetailStatusBadge">Draft-Only Enforced</span>
+            </div>
+            <div id="ticketDetailEmpty" class="p-6 text-center text-muted">
+              Select an email ticket from the left column to inspect metadata, grounded knowledge retrieval, and the AI-generated draft response.
+            </div>
+            <div id="ticketDetailBody" style="display:none;" class="p-4">
+              <!-- Sender meta -->
+              <div class="ticket-meta-box">
+                <div><strong>From:</strong> <span id="ticketDetailSender">N/A</span></div>
+                <div><strong>Intent:</strong> <span class="badge" id="ticketDetailIntent">UNKNOWN</span></div>
+                <div><strong>Urgency:</strong> <span class="badge" id="ticketDetailUrgency">MEDIUM</span></div>
+                <div><strong>Sentiment:</strong> <span class="badge" id="ticketDetailSentiment">NEUTRAL</span></div>
+              </div>
+
+              <!-- Escalation alert if triggered -->
+              <div class="alert-box mb-3" id="ticketEscalationAlert" style="display:none;">
+                <span class="alert-icon">🚨</span>
+                <div>
+                  <strong>Mandatory Human Escalation Active:</strong>
+                  <span id="ticketEscalationReason">Reason</span>
+                </div>
+              </div>
+
+              <!-- Customer Message -->
+              <div class="section-box">
+                <h5>Customer Inbound Message</h5>
+                <div class="email-body-text" id="ticketDetailCleanBody">Body text...</div>
+              </div>
+
+              <!-- Grounded Knowledge Evidence -->
+              <div class="section-box">
+                <h5>Retrieved Operational Knowledge (Grounding Evidence)</h5>
+                <div class="grounding-snippets" id="ticketGroundedSnippets">
+                  <em>No grounded knowledge retrieved.</em>
+                </div>
+              </div>
+
+              <!-- Editable Draft -->
+              <div class="section-box">
+                <div class="flex-between">
+                  <h5>AI Response Draft (Draft-Only Mode)</h5>
+                  <span class="badge badge-cyan">Automated Sending Blocked</span>
+                </div>
+                <textarea id="ticketDraftEditor" rows="6" class="form-control font-mono"></textarea>
+                <div class="mt-2 flex-between">
+                  <button class="btn btn-secondary btn-sm" id="btnSaveDraftEdit">Update Draft</button>
+                  <button class="btn btn-primary btn-sm" id="btnApproveTicket">Approve Draft Response &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: INVOICE INTELLIGENCE & FINANCIAL OPERATIONS -->
+      <section class="tab-pane" id="tab-invoices">
+        <div class="pane-header">
+          <div>
+            <h2>Project 3: Invoice Intelligence & Financial Operations</h2>
+            <p>Upload invoices and receipts, extract itemized tables, audit mathematical discrepancies, and export approved records to Google Sheets.</p>
+          </div>
+          <div class="pane-actions">
+            <button class="btn btn-secondary btn-sm" id="btnLoadValidInvoiceSample">Load Valid Sample PDF</button>
+            <button class="btn btn-secondary btn-sm" id="btnLoadDiscrepantInvoiceSample">Load Discrepant Sample PDF</button>
+            <button class="btn btn-outline btn-sm" id="btnViewSheetsLedger">View Google Sheets Staged Ledger</button>
+          </div>
+        </div>
+
+        <div class="two-col-grid">
+          <!-- Upload Box -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Secure PDF Upload</h3>
+              <span class="badge badge-info">PDF Validation & Hash</span>
+            </div>
+            <div class="upload-dropzone" id="invoiceDropzone">
+              <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <p>Drag and drop vendor invoice PDF, or click to browse</p>
+              <span class="text-muted text-xs">Supports PDF up to 10MB. Enforces %PDF signature check.</span>
+              <input type="file" id="invoiceFileInput" accept="application/pdf" style="display:none;">
+            </div>
+            <div id="uploadStatusText" class="mt-2 text-center text-sm text-cyan"></div>
+          </div>
+
+          <!-- Extraction & Discrepancy Card -->
+          <div class="card" id="invoiceExtractionCard">
+            <div class="card-header">
+              <h3>Extracted Financial Fields</h3>
+              <span class="badge" id="invoiceExtractionBadge">Awaiting File</span>
+            </div>
+            <div id="invoiceExtractionPlaceholder" class="p-6 text-center text-muted">
+              Upload a valid or discrepant invoice PDF to view parsed itemized line items, mathematical reconciliation, and duplicate alerts.
+            </div>
+            <div id="invoiceExtractionContent" style="display:none;" class="p-4">
+              <div class="invoice-summary-grid">
+                <div><span class="text-muted">Vendor:</span> <strong id="invSummaryVendor">Acme</strong></div>
+                <div><span class="text-muted">Invoice #:</span> <strong id="invSummaryNumber">INV-001</strong></div>
+                <div><span class="text-muted">Date:</span> <span id="invSummaryDate">2026-10-23</span></div>
+                <div><span class="text-muted">Status:</span> <span class="badge" id="invSummaryPaymentStatus">UNPAID</span></div>
+              </div>
+
+              <!-- Mathematical Discrepancy Alert -->
+              <div class="alert-box alert-error mt-3" id="invDiscrepancyBox" style="display:none;">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                  <strong>Mathematical Discrepancy Flagged:</strong>
+                  <p id="invDiscrepancyText" class="text-sm mt-1 mb-0"></p>
+                </div>
+              </div>
+
+              <!-- Duplicate Alert -->
+              <div class="alert-box alert-warning mt-3" id="invDuplicateBox" style="display:none;">
+                <span class="alert-icon">🔄</span>
+                <div>
+                  <strong>Duplicate Invoice Detected:</strong>
+                  <span id="invDuplicateText" class="text-sm">Identical invoice number or file hash already exists.</span>
+                </div>
+              </div>
+
+              <!-- Line Items -->
+              <div class="mt-3">
+                <h5>Line Items</h5>
+                <table class="table-compact" id="invLineItemsTable">
+                  <thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr></thead>
+                  <tbody id="invLineItemsTbody"></tbody>
+                </table>
+              </div>
+
+              <!-- Calculations Breakdown -->
+              <div class="financial-totals-box mt-3">
+                <div class="total-row"><span>Subtotal:</span> <span id="invSubtotalVal">$0.00</span></div>
+                <div class="total-row"><span>Tax:</span> <span id="invTaxVal">$0.00</span></div>
+                <div class="total-row grand"><span>Total:</span> <span id="invTotalVal">$0.00</span></div>
+              </div>
+
+              <!-- Actions -->
+              <div class="mt-3 flex-between">
+                <button class="btn btn-secondary btn-sm" id="btnApproveCurrentInvoice">Approve Invoice Review</button>
+                <button class="btn btn-primary btn-sm" id="btnExportCurrentInvoice">Export to Google Sheets &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stored Invoices Table -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3>Processed Invoices Registry</h3>
+            <span class="text-muted text-sm">Real-time persistence with Google Sheets sync status</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Vendor</th>
+                  <th>Invoice #</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Payment Status</th>
+                  <th>Discrepancy</th>
+                  <th>Review Status</th>
+                  <th>Sheets Export</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyInvoices">
+                <tr><td colspan="9" class="text-center text-muted">No invoices processed yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: ENTERPRISE ORCHESTRATION -->
+      <section class="tab-pane" id="tab-orchestration">
+        <div class="pane-header">
+          <div>
+            <h2>Project 4: Enterprise Multi-Agent Business Orchestration</h2>
+            <p>Customer intake, authorized template contract generation, Stripe cryptographic webhook verification, and weekly executive digests.</p>
+          </div>
+          <div class="pane-actions">
+            <button class="btn btn-primary btn-sm" id="btnGenerateExecutiveDigest">Generate Executive Digest</button>
+          </div>
+        </div>
+
+        <div class="two-col-grid">
+          <!-- Client Onboarding Form -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Client Intake & Contract Initiation</h3>
+              <span class="badge badge-info">Stable Project Code</span>
+            </div>
+            <form id="formClientOnboard" class="form-grid">
+              <div class="form-group">
+                <label for="onboardCustomerName">Primary Executive Name *</label>
+                <input type="text" id="onboardCustomerName" required value="Alexander Wright">
+              </div>
+              <div class="form-group">
+                <label for="onboardCustomerEmail">Executive Email *</label>
+                <input type="email" id="onboardCustomerEmail" required value="a.wright@hyperion-global.com">
+              </div>
+              <div class="form-group">
+                <label for="onboardCompanyName">Enterprise Organization *</label>
+                <input type="text" id="onboardCompanyName" required value="Hyperion Global Retail Inc.">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="onboardTier">Service Tier</label>
+                  <select id="onboardTier">
+                    <option value="GROWTH">Growth Automation Tier</option>
+                    <option value="ENTERPRISE" selected>Enterprise Autonomous Workforce</option>
+                    <option value="BESPOKE">Bespoke Custom AI Pipeline</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="onboardContractValue">Contract Value (USD) *</label>
+                  <input type="number" id="onboardContractValue" required min="500" value="45000">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                <span>Initiate Onboarding & Draft Contract &rarr;</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Stripe Webhook Payment Simulator -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Stripe Webhook Verification Simulator</h3>
+              <span class="badge badge-cyan">HMAC-SHA256 & Replay Protection</span>
+            </div>
+            <p class="text-sm text-muted">
+              Verify that the system deterministically validates official Stripe cryptographic signatures and rejects spoofed payments or replay events.
+            </p>
+            <form id="formSimulateStripe" class="form-grid mt-2">
+              <div class="form-group">
+                <label for="simStripeProject">Target Project Code / ID</label>
+                <select id="simStripeProject">
+                  <option value="">(Select Onboarded Project)</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="simStripeAmount">Settlement Amount ($)</label>
+                  <input type="number" id="simStripeAmount" value="45000">
+                </div>
+                <div class="form-group">
+                  <label for="simStripeCorruptSig">Signature Integrity</label>
+                  <select id="simStripeCorruptSig">
+                    <option value="valid" selected>Authentic HMAC-SHA256 Signature</option>
+                    <option value="corrupt">Intentionally Corrupted Signature (Test Rejection)</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary btn-block" id="btnSimulateStripe">
+                <span>Simulate Stripe Webhook Event &rarr;</span>
+              </button>
+            </form>
+            <div id="stripeSimResultBox" class="mt-3 p-3 rounded" style="display:none; background: rgba(0,0,0,0.3); font-size: 13px;"></div>
+          </div>
+        </div>
+
+        <!-- Active Projects & Contracts -->
+        <div class="card mt-4">
+          <div class="card-header">
+            <h3>Customer Projects & Orchestration States</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Project Code</th>
+                  <th>Client & Company</th>
+                  <th>Service Tier</th>
+                  <th>Contract Value</th>
+                  <th>Contract Status</th>
+                  <th>Payment Settlement</th>
+                  <th>Workflow State</th>
+                  <th>Slack Channel</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyProjects">
+                <tr><td colspan="9" class="text-center text-muted">No client projects onboarded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: WORKFLOW STUDIO -->
+      <section class="tab-pane" id="tab-workflows">
+        <div class="pane-header">
+          <div>
+            <h2>Workflow Studio</h2>
+            <p>Real-time state monitoring, duration telemetry, error summaries, and retry management across all system pipelines.</p>
+          </div>
+        </div>
+
+        <div class="workflows-grid" id="workflowsStudioGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- TAB 7: AGENT REGISTRY -->
+      <section class="tab-pane" id="tab-agents">
+        <div class="pane-header">
+          <div>
+            <h2>Agent Workforce Registry</h2>
+            <p>10 narrowly scoped workforce personas with explicit responsibilities, permission boundaries, and safety guardrails.</p>
+          </div>
+        </div>
+
+        <div class="agents-grid" id="agentsRegistryGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- TAB 8: APPROVAL CENTER -->
+      <section class="tab-pane" id="tab-approvals">
+        <div class="pane-header">
+          <div>
+            <h2>Human-in-the-Loop Approval Center</h2>
+            <p>Mandatory governance gate for contracts, invoice discrepancies, support escalations, and financial exports.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Pending Authorization Requests</h3>
+            <span class="badge badge-amber" id="pendingApprovalsHeaderBadge">0 Pending</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Request Type</th>
+                  <th>Title & Entity</th>
+                  <th>Details & Reason</th>
+                  <th>Requested By</th>
+                  <th>Created At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyApprovals">
+                <tr><td colspan="6" class="text-center text-muted">No pending approvals. System running without blockers.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 9: EXECUTION HISTORY -->
+      <section class="tab-pane" id="tab-history">
+        <div class="pane-header">
+          <div>
+            <h2>Execution Audit Telemetry Ledger</h2>
+            <p>Traceable execution timeline with microsecond latency measurements, retry counts, and error summaries.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>System Telemetry Logs</h3>
+            <div class="table-filters">
+              <select id="filterAuditModule" class="select-sm">
+                <option value="">All Modules</option>
+                <option value="leads">Leads</option>
+                <option value="support">Support</option>
+                <option value="invoices">Invoices</option>
+                <option value="orchestration">Orchestration</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Workflow Name</th>
+                  <th>Module</th>
+                  <th>Trigger</th>
+                  <th>Status</th>
+                  <th>Duration</th>
+                  <th>Related Record</th>
+                  <th>Error / Telemetry</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyAuditHistory">
+                <tr><td colspan="8" class="text-center text-muted">No telemetry logs recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 10: INTEGRATION SETTINGS -->
+      <section class="tab-pane" id="tab-integrations">
+        <div class="pane-header">
+          <div>
+            <h2>Integration Settings & Connection Diagnostics</h2>
+            <p>Modular adapters with health checks, circuit breakers, and seamless switching between Demo Mode and Live Credentials.</p>
+          </div>
+        </div>
+
+        <div class="integrations-grid" id="integrationsGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- TAB 11: DOCUMENTATION & API -->
+      <section class="tab-pane" id="tab-docs">
+        <div class="pane-header">
+          <div>
+            <h2>Platform Documentation & Architecture</h2>
+            <p>Implementation guidelines, n8n/Make automation blueprints, security policies, and API specifications.</p>
+          </div>
+        </div>
+
+        <div class="docs-container card p-6">
+          <div class="docs-nav-pills">
+            <button class="doc-tab active" data-doc="doc-arch">Architecture & Pipeline</button>
+            <button class="doc-tab" data-doc="doc-n8n">n8n / Make Blueprints</button>
+            <button class="doc-tab" data-doc="doc-security">Security & Compliance</button>
+            <button class="doc-tab" data-doc="doc-demo">14 Demo Scenarios</button>
+          </div>
+
+          <div class="doc-content mt-4" id="docContentArea">
+            <!-- Dynamic content loaded via JS -->
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Shared Modals (Contract View, Executive Digest, Sheets Ledger) -->
+  <div class="modal-backdrop" id="genericModalBackdrop" style="display:none;">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="genericModalTitle">Modal Title</h3>
+        <button class="modal-close" onclick="closeGenericModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="genericModalBody"></div>
+      <div class="modal-footer" id="genericModalFooter">
+        <button class="btn btn-secondary" onclick="closeGenericModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
