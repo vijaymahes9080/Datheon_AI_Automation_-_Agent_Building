@@ -13,6 +13,12 @@
   <a href="https://github.com/vijaymahes9080/Datheon_AI_Automation_-_Agent_Building"><img src="https://img.shields.io/badge/Commits-30%20Pushed-6366F1?style=flat-square&logo=git&logoColor=white" alt="30 Commits" /></a>
 </p>
 
+<p align="center">
+  <a href="https://vijaymahes9080.github.io/Datheon_AI_Automation_-_Agent_Building/">
+    <img src="https://img.shields.io/badge/🌐_Live_Interactive_Studio-GitHub_Pages-2563EB?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Interactive Studio" />
+  </a>
+</p>
+
 ---
 
 ## 🌟 Executive Summary
@@ -231,6 +237,7 @@ Comprehensive technical guides are available in the [`docs/`](docs/) directory:
 - [docs/DEMO_GUIDE.md](docs/DEMO_GUIDE.md) — Step-by-step reproduction instructions for all 14 mandatory business scenarios.
 - [docs/CLIENT_ONBOARDING.md](docs/CLIENT_ONBOARDING.md) — Enterprise client handover protocol, production readiness checklist, and systemd guide.
 - [docs/VIDEO_WALKTHROUGH.md](docs/VIDEO_WALKTHROUGH.md) — Scene-by-scene presentation script and speaking tracks for a 5–8 minute video.
+- [docs/GITHUB_PAGES_DEPLOYMENT.md](docs/GITHUB_PAGES_DEPLOYMENT.md) — Step-by-step GitHub Pages build and deployment guide.
 
 ---
 
