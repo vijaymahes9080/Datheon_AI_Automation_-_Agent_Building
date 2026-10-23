@@ -184,6 +184,26 @@ class OrchestrationService:
             "slack_channel": slack_res,
         }
 
+    def reject_contract(self, project_id: str, rejected_by: str, reason: str, db: Session) -> Dict[str, Any]:
+        """Reject contract draft and record rationale."""
+        project = db.query(CustomerProject).filter(CustomerProject.id == project_id).first()
+        if not project:
+            raise ValueError(f"Project '{project_id}' not found.")
+
+        project.contract_status = "REJECTED"
+        project.workflow_state = "FAILED"
+        db.commit()
+        db.refresh(project)
+
+        logger.info(f"Contract for {project.project_code} rejected by {rejected_by}: {reason}")
+        return {
+            "success": True,
+            "project_id": project.id,
+            "contract_status": "REJECTED",
+            "reason": reason,
+        }
+
+
     def verify_stripe_payment(
         self,
         event_id: str,
