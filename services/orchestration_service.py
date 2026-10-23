@@ -321,3 +321,8 @@ class OrchestrationService:
             .filter((CustomerProject.id == project_id) | (CustomerProject.project_code == project_id))
             .first()
         )
+
+    def get_payment_events(self, db: Session, limit: int = 50) -> List[PaymentEvent]:
+        """Query historical verified payment events."""
+        return db.query(PaymentEvent).order_by(PaymentEvent.processed_at.desc()).limit(limit).all()
+
