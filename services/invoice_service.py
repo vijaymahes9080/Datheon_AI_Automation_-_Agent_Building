@@ -341,3 +341,31 @@ class InvoiceService:
                 db.commit()
                 logger.error(f"Failed to export invoice {invoice.id} to Google Sheets: {exc}")
                 raise
+
+    def get_invoices(
+        self,
+        db: Session,
+        approval_status: Optional[str] = None,
+        export_status: Optional[str] = None,
+        has_discrepancy: Optional[bool] = None,
+        duplicate_detected: Optional[bool] = None,
+        limit: int = 50,
+        offset: int = 0,
+    ) -> List[InvoiceRecord]:
+        """Query stored invoices with filtering and pagination."""
+        query = db.query(InvoiceRecord)
+        if approval_status:
+            query = query.filter(InvoiceRecord.approval_status == approval_status.upper())
+        if export_status:
+            query = query.filter(InvoiceRecord.export_status == export_status.upper())
+        if has_discrepancy is not None:
+            query = query.filter(InvoiceRecord.has_arithmetic_discrepancy == has_discrepancy)
+        if duplicate_detected is not None:
+            query = query.filter(InvoiceRecord.duplicate_detected == duplicate_detected)
+
+        return query.order_by(InvoiceRecord.created_at.desc()).offset(offset).limit(limit).all()
+
+    def get_invoice_by_id(self, invoice_id: str, db: Session) -> Optional[InvoiceRecord]:
+        """Retrieve single invoice by ID with line items."""
+        return db.query(InvoiceRecord).filter(InvoiceRecord.id == invoice_id).first()
+
