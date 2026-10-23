@@ -326,3 +326,9 @@ class OrchestrationService:
         """Query historical verified payment events."""
         return db.query(PaymentEvent).order_by(PaymentEvent.processed_at.desc()).limit(limit).all()
 
+    def export_digest_markdown(self, digest: ExecutiveDigestResponse) -> str:
+        """Format executive digest into standalone markdown report."""
+        header = f"# ORBIT AI Operations Studio — Executive Operations Report\n\n**Period:** {digest.period}\n**Generated:** {digest.data_freshness}\n\n---\n\n"
+        return header + digest.executive_narrative
+
+
