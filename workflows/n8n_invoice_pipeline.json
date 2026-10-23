@@ -1,0 +1,33 @@
+{
+  "name": "ORBIT Project 3 - Invoice Intelligence & Financial Operations",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "invoice-drop",
+        "options": {}
+      },
+      "name": "Drive / Storage Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "http://127.0.0.1:8000/api/invoices/upload",
+        "sendBinaryData": true,
+        "binaryPropertyName": "data",
+        "options": {}
+      },
+      "name": "ORBIT Invoice Extraction & Reconcile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [520, 300]
+    }
+  ],
+  "connections": {
+    "Drive / Storage Trigger": {
+      "main": [[{ "node": "ORBIT Invoice Extraction & Reconcile", "type": "main", "index": 0 }]]
+    }
+  }
+}

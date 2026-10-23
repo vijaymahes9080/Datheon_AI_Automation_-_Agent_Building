@@ -1,0 +1,30 @@
+{
+  "name": "ORBIT AI Operations Studio - Make.com Blueprints",
+  "version": 1,
+  "scenarios": [
+    {
+      "id": "scenario-1-lead-sync",
+      "name": "Webhook Lead Sync & Slack Notification",
+      "modules": [
+        { "id": 1, "module": "gateway:CustomWebHook" },
+        { "id": 2, "module": "http:ActionSendRequest", "url": "http://127.0.0.1:8000/api/leads/webhook" }
+      ]
+    },
+    {
+      "id": "scenario-2-support-watch",
+      "name": "Email Triage Watcher & Draft Creation",
+      "modules": [
+        { "id": 1, "module": "google-email:WatchEmails" },
+        { "id": 2, "module": "http:ActionSendRequest", "url": "http://127.0.0.1:8000/api/support/ingest" }
+      ]
+    },
+    {
+      "id": "scenario-3-invoice-sheets",
+      "name": "Invoice Accounting Synchronization",
+      "modules": [
+        { "id": 1, "module": "google-drive:WatchFiles" },
+        { "id": 2, "module": "http:ActionSendRequest", "url": "http://127.0.0.1:8000/api/invoices/upload" }
+      ]
+    }
+  ]
+}

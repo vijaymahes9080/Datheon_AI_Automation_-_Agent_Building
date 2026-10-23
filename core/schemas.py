@@ -95,8 +95,18 @@ class LeadResponse(BaseModel):
     processing_time_ms: float
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
+
+    @field_validator("missing_information", "sales_talking_points", mode="before")
+    @classmethod
+    def parse_json_lists(cls, v: Any) -> List[str]:
+        if isinstance(v, str):
+            try:
+                import json
+                return json.loads(v)
+            except Exception:
+                return []
+        return v or []
 
 
 # ==============================================================================
@@ -148,13 +158,14 @@ class SupportTicketResponse(BaseModel):
     sentiment: str
     requires_escalation: bool
     escalation_reason: Optional[str]
+    retrieved_knowledge: Optional[str] = None
     draft_response: Optional[str]
     status: str
     is_draft_only: bool
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
+
 
 
 # ==============================================================================
@@ -169,6 +180,9 @@ class InvoiceLineItemSchema(BaseModel):
     quantity: float = Field(default=1.0, ge=0)
     unit_price: float = Field(default=0.0, ge=0)
     line_total: float = Field(default=0.0, ge=0)
+
+    model_config = {"from_attributes": True}
+
 
 
 class InvoiceExtractResult(BaseModel):
@@ -216,8 +230,8 @@ class InvoiceResponse(BaseModel):
     created_at: datetime
     line_items: List[InvoiceLineItemSchema] = Field(default_factory=list)
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
+
 
 
 # ==============================================================================

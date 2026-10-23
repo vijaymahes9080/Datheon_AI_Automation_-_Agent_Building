@@ -1,0 +1,55 @@
+{
+  "name": "ORBIT Project 1 - Lead Intelligence & Revenue Routing",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-webhook",
+        "options": {}
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Compute SHA-256 idempotency key\nconst crypto = require('crypto');\nconst email = items[0].json.contact_email.toLowerCase().trim();\nconst company = items[0].json.company_name.toLowerCase().trim();\nconst budget = items[0].json.budget;\nconst hash = crypto.createHash('sha256').update(`${email}:${company}:${budget}`).digest('hex');\nitems[0].json.idempotency_key = hash;\nreturn items;"
+      },
+      "name": "Deduplication & Normalize",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "http://127.0.0.1:8000/api/leads/webhook",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            { "name": "contact_name", "value": "={{$json[\"contact_name\"]}}" },
+            { "name": "contact_email", "value": "={{$json[\"contact_email\"]}}" },
+            { "name": "company_name", "value": "={{$json[\"company_name\"]}}" },
+            { "name": "company_size", "value": "={{$json[\"company_size\"]}}" },
+            { "name": "budget", "value": "={{$json[\"budget\"]}}" },
+            { "name": "needs", "value": "={{$json[\"needs\"]}}" },
+            { "name": "consent_given", "value": true }
+          ]
+        }
+      },
+      "name": "ORBIT Studio API Intake",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{ "node": "Deduplication & Normalize", "type": "main", "index": 0 }]]
+    },
+    "Deduplication & Normalize": {
+      "main": [[{ "node": "ORBIT Studio API Intake", "type": "main", "index": 0 }]]
+    }
+  }
+}

@@ -5,6 +5,7 @@ Upload -> Inspect -> Extract -> Validate -> Reconcile -> Approve -> Export -> Au
 Features mathematical reconciliation, duplicate detection, and Google Sheets export staging.
 """
 
+from datetime import datetime
 import hashlib
 import io
 import json
@@ -13,6 +14,7 @@ import re
 import time
 from typing import Any, Dict, List, Optional, Tuple
 from pypdf import PdfReader
+
 from sqlalchemy.orm import Session
 from core.audit import timed_execution
 from core.models import ApprovalRequest, InvoiceLineItem, InvoiceRecord
@@ -103,10 +105,11 @@ class InvoiceService:
                     return default
             return default
 
-        subtotal = extract_amount(r"(?i)subtotal[:\s]*\$?([0-9,]+\.[0-9]{2})", 0.0)
-        tax_amount = extract_amount(r"(?i)tax[:\s]*\$?([0-9,]+\.[0-9]{2})", 0.0)
-        discount_amount = extract_amount(r"(?i)discount[:\s]*\$?([0-9,]+\.[0-9]{2})", 0.0)
-        total = extract_amount(r"(?i)total[:\s]*\$?([0-9,]+\.[0-9]{2})", 0.0)
+        subtotal = extract_amount(r"(?i)\bsubtotal[:\s]*\$?([0-9,]+(?:\.[0-9]{2})?)", 0.0)
+        tax_amount = extract_amount(r"(?i)\btax[:\s]*\$?([0-9,]+(?:\.[0-9]{2})?)", 0.0)
+        discount_amount = extract_amount(r"(?i)\bdiscount[:\s]*\$?([0-9,]+(?:\.[0-9]{2})?)", 0.0)
+        total = extract_amount(r"(?i)\btotal[:\s]*\$?([0-9,]+(?:\.[0-9]{2})?)", 0.0)
+
 
         # 7. Line Item Extraction (e.g. "Cloud Hosting Tier 1 x $500.00 = $500.00" or tabular rows)
         line_items: List[InvoiceLineItemSchema] = []
@@ -290,9 +293,10 @@ class InvoiceService:
 
         invoice.approval_status = "APPROVED"
         invoice.approved_by = approved_by
-        invoice.approved_at = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
+        invoice.approved_at = datetime.utcnow()
         db.commit()
         db.refresh(invoice)
+
 
         logger.info(f"Invoice {invoice.invoice_number} ({invoice.vendor_name}) approved by {approved_by}")
         return {

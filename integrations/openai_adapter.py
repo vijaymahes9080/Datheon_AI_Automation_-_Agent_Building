@@ -203,20 +203,22 @@ class OpenAIAdapter(BaseIntegrationAdapter):
         body = str(email_data.get("body", "")).lower()
         sender_name = email_data.get("sender_name", "Valued Customer")
 
+        full_text = f"{subject} {body}"
+
         # Intent Detection
-        if any(k in subject or k in body for k in ["invoice", "charge", "refund", "billing", "credit card", "payment"]):
-            intent = "BILLING"
-        elif any(k in subject or k in body for k in ["bug", "error", "500", "crash", "api failed", "latency", "exception"]):
-            intent = "TECHNICAL_SUPPORT"
-        elif any(k in subject or k in body for k in ["password", "login", "2fa", "sso", "locked out", "access"]):
-            intent = "ACCOUNT_ACCESS"
-        elif any(k in subject or k in body for k in ["urgent", "down", "outage", "security breach", "critical failure"]):
+        if any(k in full_text for k in ["urgent", "outage", "security breach", "critical failure", "emergency", "critical"]):
             intent = "URGENT_INCIDENTS"
-        elif any(k in subject or k in body for k in ["complaint", "unacceptable", "terrible", "lawsuit", "legal"]):
+        elif any(k in full_text for k in ["invoice", "charge", "refund", "billing", "credit card", "payment"]):
+            intent = "BILLING"
+        elif any(k in full_text for k in ["bug", "error", "500", "crash", "api failed", "latency", "exception"]):
+            intent = "TECHNICAL_SUPPORT"
+        elif any(k in full_text for k in ["password", "login", "2fa", "sso", "locked out", "access"]):
+            intent = "ACCOUNT_ACCESS"
+        elif any(k in full_text for k in ["complaint", "unacceptable", "terrible", "lawsuit", "legal"]):
             intent = "COMPLAINTS"
-        elif any(k in subject or k in body for k in ["order", "shipping", "tracking", "product inquiry"]):
+        elif any(k in full_text for k in ["order", "shipping", "tracking", "product inquiry"]):
             intent = "PRODUCT_ORDER"
-        elif any(k in subject or k in body for k in ["crypto", "lottery", "seo ranking guaranteed", "casino"]):
+        elif any(k in full_text for k in ["crypto", "lottery", "seo ranking guaranteed", "casino"]):
             intent = "SPAM"
         else:
             intent = "UNKNOWN"
@@ -224,20 +226,18 @@ class OpenAIAdapter(BaseIntegrationAdapter):
         # Urgency & Sentiment
         if (
             intent == "URGENT_INCIDENTS"
-            or "immediately" in body
-            or "asap" in body
-            or "outage" in body
-            or "security" in body
+            or any(w in full_text for w in ["immediately", "immediate", "asap", "outage", "emergency", "critical", "security breach", "down"])
         ):
             urgency = "CRITICAL"
-        elif intent in ["BILLING", "TECHNICAL_SUPPORT"] and ("broken" in body or "blocked" in body):
+        elif intent in ["BILLING", "TECHNICAL_SUPPORT"] and ("broken" in full_text or "blocked" in full_text):
             urgency = "HIGH"
         else:
             urgency = "MEDIUM"
 
-        if any(w in body for w in ["furious", "unacceptable", "scam", "lawsuit", "terrible"]):
+        if any(w in full_text for w in ["furious", "unacceptable", "scam", "lawsuit", "terrible"]):
             sentiment = "ANGRY"
-        elif any(w in body for w in ["disappointed", "problem", "delay", "issue"]):
+        elif any(w in full_text for w in ["disappointed", "problem", "delay", "issue"]):
+
             sentiment = "NEGATIVE"
         elif any(w in body for w in ["thank you", "great", "appreciate", "helpful"]):
             sentiment = "POSITIVE"
@@ -327,3 +327,7 @@ class OpenAIAdapter(BaseIntegrationAdapter):
             f"*Summary:* The ORBIT Operations Studio workforce is operating stably with zero unhandled system failures."
         )
         return narrative
+
+    # Alias for compatibility
+    generate_executive_narrative = generate_executive_digest
+

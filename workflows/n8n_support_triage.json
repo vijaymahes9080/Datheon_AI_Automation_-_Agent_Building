@@ -1,0 +1,41 @@
+{
+  "name": "ORBIT Project 2 - Customer Support & Email Intelligence",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": { "item": [{ "mode": "everyMinute" }] },
+        "mailbox": "INBOX",
+        "format": "resolved"
+      },
+      "name": "Email Inbound Trigger",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "http://127.0.0.1:8000/api/support/ingest",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            { "name": "sender_name", "value": "={{$json[\"from\"][\"text\"]}}" },
+            { "name": "sender_email", "value": "={{$json[\"from\"][\"value\"][0][\"address\"]}}" },
+            { "name": "subject", "value": "={{$json[\"subject\"]}}" },
+            { "name": "body", "value": "={{$json[\"text\"]}}" },
+            { "name": "message_id", "value": "={{$json[\"messageId\"]}}" }
+          ]
+        }
+      },
+      "name": "ORBIT Support Intelligence Engine",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [520, 300]
+    }
+  ],
+  "connections": {
+    "Email Inbound Trigger": {
+      "main": [[{ "node": "ORBIT Support Intelligence Engine", "type": "main", "index": 0 }]]
+    }
+  }
+}

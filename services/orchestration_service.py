@@ -290,9 +290,10 @@ class OrchestrationService:
     def generate_weekly_executive_digest(self, db: Session) -> ExecutiveDigestResponse:
         """E: Synthesize evidence-grounded executive digest from actual stored records."""
         metrics = get_operations_summary(db)
-        narrative = self.openai.generate_executive_narrative(metrics)
+        narrative = self.openai.generate_executive_digest(metrics)
 
         now_str = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+
         return ExecutiveDigestResponse(
             period="Last 7 Days (Rolling Operational Window)",
             data_freshness=f"As of {now_str}",
