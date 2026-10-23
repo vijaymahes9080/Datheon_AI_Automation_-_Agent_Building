@@ -1,10 +1,13 @@
-# Python
+# ==============================================================================
+# ORBIT AI Operations Studio - Comprehensive .gitignore
+# ==============================================================================
+
+# Python Bytecode & Compilation Caches
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -17,46 +20,81 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual Environments
 venv/
+venv*/
 ENV/
+env/
+env*/
+.venv/
+.venv*/
 env.bak/
 venv.bak/
-.venv/
 
-# Environment Variables & Secrets
+# Environment Configurations & Local Secrets
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+credentials/
 *.pem
 *.key
+*.cert
 id_rsa
+id_rsa.pub
 id_ed25519
+id_ed25519.pub
 
-# SQLite / Database
+# SQLite Databases & Local Storage
 *.sqlite
 *.sqlite3
 *.db
+*.db-shm
+*.db-wal
+orbit_operations.db
+orbit_studio.db
 
-# IDEs
+# File Upload Staging
+uploads/*
+!uploads/.gitkeep
+
+# IDEs & Editor Configuration
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
+.project
+.pydevproject
+.settings/
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Test & Coverage
+# Testing & Code Quality Caches
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
+.tox/
+.nox/
+.hypothesis/
+coverage.xml
+*.cover
 
-# Logs
+# Operating System Metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Telemetry, Diagnostics & Process Logs
 *.log
 logs/
+*.pid

@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EFF6FF" />
+    </linearGradient>
+    <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="softBoxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.05" />
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.03" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" fill="url(#archBg)" />
+  <rect width="1200" height="680" fill="none" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Section Title -->
+  <g transform="translate(60, 45)">
+    <rect width="180" height="26" rx="13" fill="#EEF2FF" stroke="#C7D2FE" />
+    <text x="14" y="17" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="700" fill="#4338CA">SYSTEM TOPOLOGY</text>
+    <text x="0" y="55" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="800" fill="#0F172A">ORBIT Multi-Tier Enterprise Architecture</text>
+    <text x="0" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="500" fill="#64748B">Modular, asynchronous operations engine unifying autonomous agents with deterministic verification</text>
+  </g>
+
+  <!-- Layer 1: Client & Presentation Tier -->
+  <g transform="translate(60, 140)" filter="url(#softBoxShadow)">
+    <rect width="1080" height="85" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="0" y="0" width="8" height="85" rx="4" fill="#3B82F6" />
+    <text x="24" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">TIER 1: PRESENTATION &amp; WORKSPACE SHELL</text>
+    <text x="24" y="46" font-family="sans-serif" font-size="11.5" font-weight="500" fill="#64748B">Single-Page Studio • Responsive Glassmorphism • Vanilla HTML5/CSS3/Async JavaScript</text>
+    
+    <!-- Workspace buttons pill cluster -->
+    <g transform="translate(24, 54)">
+      <rect x="0" y="0" width="135" height="22" rx="6" fill="#F1F5F9" />
+      <text x="8" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#334155">Operations Overview</text>
+      
+      <rect x="145" y="0" width="115" height="22" rx="6" fill="#EFF6FF" stroke="#BFDBFE" />
+      <text x="153" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#1D4ED8">Lead Intelligence</text>
+      
+      <rect x="270" y="0" width="125" height="22" rx="6" fill="#EFF6FF" stroke="#BFDBFE" />
+      <text x="278" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#1D4ED8">Support Intelligence</text>
+
+      <rect x="405" y="0" width="120" height="22" rx="6" fill="#ECFDF5" stroke="#A7F3D0" />
+      <text x="413" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#047857">Invoice Intelligence</text>
+
+      <rect x="535" y="0" width="145" height="22" rx="6" fill="#FAF5FF" stroke="#E9D5FF" />
+      <text x="543" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#7E22CE">Enterprise Orchestration</text>
+
+      <rect x="690" y="0" width="105" height="22" rx="6" fill="#FFFBEB" stroke="#FDE68A" />
+      <text x="698" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#B45309">Workflow Studio</text>
+
+      <rect x="805" y="0" width="105" height="22" rx="6" fill="#FEF2F2" stroke="#FECACA" />
+      <text x="813" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#B91C1C">Approval Center</text>
+
+      <rect x="920" y="0" width="115" height="22" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+      <text x="928" y="15" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#475569">Execution History</text>
+    </g>
+  </g>
+
+  <!-- Connective arrows Layer 1 to 2 -->
+  <path d="M600 225 L600 248" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4,4" />
+  <polygon points="600,253 596,245 604,245" fill="#94A3B8" />
+
+  <!-- Layer 2: Application Tier (FastAPI, Services, 10 Personas) -->
+  <g transform="translate(60, 255)" filter="url(#softBoxShadow)">
+    <rect width="1080" height="240" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="0" y="0" width="8" height="240" rx="4" fill="#6366F1" />
+    
+    <text x="24" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">TIER 2: APPLICATION ENGINE &amp; AGENT WORKFORCE (Python 3.12 + FastAPI Async)</text>
+    <text x="24" y="44" font-family="sans-serif" font-size="11.5" font-weight="500" fill="#64748B">Event-Driven Architecture • Pydantic V2 Schemas • 10 Narrowly-Scoped Autonomous Workforce Personas</text>
+
+    <!-- Sub-Block A: Domain Services -->
+    <g transform="translate(24, 60)">
+      <rect width="500" height="160" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+      <text x="16" y="22" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">DOMAIN AUTOMATION SERVICES</text>
+      
+      <!-- Service 1 -->
+      <rect x="16" y="34" width="225" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0" />
+      <text x="26" y="52" font-family="sans-serif" font-size="11" font-weight="700" fill="#1E293B">LeadService</text>
+      <text x="26" y="68" font-family="sans-serif" font-size="9.5" font-weight="500" fill="#64748B">Rule Heuristics + OpenAI Evaluator</text>
+
+      <!-- Service 2 -->
+      <rect x="255" y="34" width="230" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0" />
+      <text x="265" y="52" font-family="sans-serif" font-size="11" font-weight="700" fill="#1E293B">SupportService &amp; RAG</text>
+      <text x="265" y="68" font-family="sans-serif" font-size="9.5" font-weight="500" fill="#64748B">Intent Classifier + Grounded Policy</text>
+
+      <!-- Service 3 -->
+      <rect x="16" y="96" width="225" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0" />
+      <text x="26" y="114" font-family="sans-serif" font-size="11" font-weight="700" fill="#1E293B">InvoiceService</text>
+      <text x="26" y="130" font-family="sans-serif" font-size="9.5" font-weight="500" fill="#64748B">PDF Parser + Arithmetic Audit</text>
+
+      <!-- Service 4 -->
+      <rect x="255" y="96" width="230" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0" />
+      <text x="265" y="114" font-family="sans-serif" font-size="11" font-weight="700" fill="#1E293B">OrchestrationService</text>
+      <text x="265" y="130" font-family="sans-serif" font-size="9.5" font-weight="500" fill="#64748B">Intake + MSA + Stripe HMAC + Digest</text>
+    </g>
+
+    <!-- Sub-Block B: 10 Agent Workforce Registry -->
+    <g transform="translate(545, 60)">
+      <rect width="510" height="160" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+      <text x="16" y="22" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">AGENT WORKFORCE REGISTRY (10 SPECIALIZED PERSONAS)</text>
+      
+      <!-- Grid of Agent Personas -->
+      <g transform="translate(16, 32)">
+        <rect x="0" y="0" width="112" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="8" y="16" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Intake Agent</text>
+
+        <rect x="122" y="0" width="115" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="130" y="16" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Lead Intel Agent</text>
+
+        <rect x="247" y="0" width="115" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="255" y="16" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Support Triage</text>
+
+        <rect x="372" y="0" width="105" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="380" y="16" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Knowledge RAG</text>
+
+        <rect x="0" y="32" width="112" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="8" y="48" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Invoice Agent</text>
+
+        <rect x="122" y="32" width="115" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="130" y="48" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Contract Agent</text>
+
+        <rect x="247" y="32" width="115" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="255" y="48" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Payment Verifier</text>
+
+        <rect x="372" y="32" width="105" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="380" y="48" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Collaboration</text>
+
+        <rect x="0" y="64" width="140" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="8" y="80" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Executive Reporting</text>
+
+        <rect x="150" y="64" width="140" height="24" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="158" y="80" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#334155">Workflow Supervisor</text>
+
+        <!-- Safety Callout -->
+        <rect x="0" y="96" width="477" height="24" rx="4" fill="#ECFDF5" stroke="#A7F3D0" />
+        <text x="10" y="112" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#065F46">Deterministic Gates: AI agents cannot bypass financial audit, payment check, or draft approval</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connective arrows Layer 2 to 3 -->
+  <path d="M600 495 L600 518" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4,4" />
+  <polygon points="600,523 596,515 604,515" fill="#94A3B8" />
+
+  <!-- Layer 3: Persistence & Modular Integration Tier -->
+  <g transform="translate(60, 525)" filter="url(#softBoxShadow)">
+    <rect width="1080" height="110" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <rect x="0" y="0" width="8" height="110" rx="4" fill="#10B981" />
+    
+    <text x="24" y="24" font-family="sans-serif" font-size="13" font-weight="700" fill="#1E293B">TIER 3: PERSISTENCE &amp; MODULAR INTEGRATION ADAPTERS</text>
+    
+    <!-- Persistence block -->
+    <g transform="translate(24, 38)">
+      <rect width="320" height="58" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+      <text x="12" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">SQLite Persistence (Thread-Safe WAL)</text>
+      <text x="12" y="36" font-family="sans-serif" font-size="9.5" font-weight="500" fill="#64748B">Tables: leads • tickets • invoices • projects • logs</text>
+      <text x="12" y="50" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#10B981">Audit Logger Engine &amp; Millisecond Telemetry</text>
+    </g>
+
+    <!-- Integrations block -->
+    <g transform="translate(360, 38)">
+      <rect width="695" height="58" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+      <text x="14" y="18" font-family="sans-serif" font-size="11" font-weight="700" fill="#0F172A">External Adapters with Mock Fallbacks &amp; Circuit Breakers</text>
+      
+      <!-- Adapter Tags -->
+      <g transform="translate(14, 26)">
+        <rect x="0" y="0" width="85" height="22" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="8" y="15" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">OpenAI LLM</text>
+
+        <rect x="92" y="0" width="95" height="22" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="100" y="15" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">Airtable CRM</text>
+
+        <rect x="194" y="0" width="85" height="22" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="202" y="15" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">Slack Alerts</text>
+
+        <rect x="286" y="0" width="100" height="22" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="294" y="15" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">Google Sheets</text>
+
+        <rect x="393" y="0" width="135" height="22" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="401" y="15" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">Stripe HMAC-SHA256</text>
+
+        <rect x="535" y="0" width="130" height="22" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+        <text x="543" y="15" font-family="sans-serif" font-size="10" font-weight="600" fill="#334155">n8n / Make Engine</text>
+      </g>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="liBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EFF6FF" />
+    </linearGradient>
+    <linearGradient id="liBrand" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="liShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.06" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.03" />
+    </filter>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="1200" height="630" fill="url(#liBg)" />
+  <rect width="1200" height="630" fill="none" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Top Decorative Header Strip -->
+  <rect width="1200" height="8" fill="url(#liBrand)" />
+
+  <!-- Header Section -->
+  <g transform="translate(60, 48)">
+    <rect width="260" height="28" rx="14" fill="#EEF2FF" stroke="#C7D2FE" />
+    <circle cx="14" cy="14" r="5" fill="#4F46E5" />
+    <text x="28" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="700" fill="#4338CA" letter-spacing="0.5">AUTONOMOUS WORKFORCE</text>
+    
+    <text x="0" y="68" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="38" font-weight="800" fill="#0F172A" letter-spacing="-1">
+      ORBIT AI Operations Studio
+    </text>
+    <text x="0" y="98" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16.5" font-weight="500" fill="#475569">
+      Bridging Autonomous Multi-Agent AI with Deterministic Enterprise Safety
+    </text>
+  </g>
+
+  <!-- 4 Core Project Cards Grid -->
+  <g transform="translate(60, 175)">
+    
+    <!-- Card 1: Lead Intelligence -->
+    <g transform="translate(0, 0)" filter="url(#liShadow)">
+      <rect width="255" height="260" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="0" y="0" width="255" height="5" rx="2.5" fill="#4F46E5" />
+      
+      <text x="20" y="32" font-family="sans-serif" font-size="14.5" font-weight="700" fill="#0F172A">Lead Intelligence</text>
+      <text x="20" y="48" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Revenue Routing Pipeline</text>
+      
+      <rect x="20" y="62" width="215" height="42" rx="6" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="30" y="78" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#64748B">SCORE</text>
+      <text x="30" y="95" font-family="sans-serif" font-size="14" font-weight="800" fill="#4F46E5">85/100 (HIGH)</text>
+
+      <text x="20" y="125" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Form &amp; Webhook Capture</text>
+      <text x="20" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• AI Sales Talking Points</text>
+      <text x="20" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Airtable &amp; Slack Sync</text>
+      <text x="20" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• SLA: 42ms (&lt; 10s req.)</text>
+
+      <rect x="20" y="215" width="215" height="26" rx="6" fill="#EEF2FF" />
+      <text x="30" y="232" font-family="sans-serif" font-size="10" font-weight="700" fill="#4338CA">✓ Project 1 Complete</text>
+    </g>
+
+    <!-- Card 2: Support Intelligence -->
+    <g transform="translate(275, 0)" filter="url(#liShadow)">
+      <rect width="255" height="260" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="0" y="0" width="255" height="5" rx="2.5" fill="#2563EB" />
+      
+      <text x="20" y="32" font-family="sans-serif" font-size="14.5" font-weight="700" fill="#0F172A">Support Intelligence</text>
+      <text x="20" y="48" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Email &amp; Grounded RAG</text>
+      
+      <rect x="20" y="62" width="215" height="42" rx="6" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="30" y="78" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#64748B">SAFETY POLICY</text>
+      <text x="30" y="95" font-family="sans-serif" font-size="13" font-weight="800" fill="#B45309">DRAFT-ONLY (LOCKED)</text>
+
+      <text x="20" y="125" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• 8 Business Intent Classes</text>
+      <text x="20" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• 100% Grounded Policy</text>
+      <text x="20" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Prompt Injection Filter</text>
+      <text x="20" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Escalation Gatekeeper</text>
+
+      <rect x="20" y="215" width="215" height="26" rx="6" fill="#EFF6FF" />
+      <text x="30" y="232" font-family="sans-serif" font-size="10" font-weight="700" fill="#1D4ED8">✓ Project 2 Complete</text>
+    </g>
+
+    <!-- Card 3: Invoice Intelligence -->
+    <g transform="translate(550, 0)" filter="url(#liShadow)">
+      <rect width="255" height="260" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="0" y="0" width="255" height="5" rx="2.5" fill="#059669" />
+      
+      <text x="20" y="32" font-family="sans-serif" font-size="14.5" font-weight="700" fill="#0F172A">Invoice Intelligence</text>
+      <text x="20" y="48" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Financial Ops &amp; Reconcile</text>
+      
+      <rect x="20" y="62" width="215" height="42" rx="6" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="30" y="78" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#64748B">ARITHMETIC AUDIT</text>
+      <text x="30" y="95" font-family="sans-serif" font-size="13" font-weight="800" fill="#059669">STRICT &plusmn;$0.05 CHECK</text>
+
+      <text x="20" y="125" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Secure PDF Text Extract</text>
+      <text x="20" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Line Item Discrepancy Flag</text>
+      <text x="20" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• SHA-256 Duplicate Hash</text>
+      <text x="20" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Sheets Approval Staging</text>
+
+      <rect x="20" y="215" width="215" height="26" rx="6" fill="#ECFDF5" />
+      <text x="30" y="232" font-family="sans-serif" font-size="10" font-weight="700" fill="#047857">✓ Project 3 Complete</text>
+    </g>
+
+    <!-- Card 4: Enterprise Orchestration -->
+    <g transform="translate(825, 0)" filter="url(#liShadow)">
+      <rect width="255" height="260" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="0" y="0" width="255" height="5" rx="2.5" fill="#7C3AED" />
+      
+      <text x="20" y="32" font-family="sans-serif" font-size="14.5" font-weight="700" fill="#0F172A">Multi-Agent Ops</text>
+      <text x="20" y="48" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Enterprise Orchestration</text>
+      
+      <rect x="20" y="62" width="215" height="42" rx="6" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="30" y="78" font-family="sans-serif" font-size="9.5" font-weight="600" fill="#64748B">STRIPE VERIFIER</text>
+      <text x="30" y="95" font-family="sans-serif" font-size="13" font-weight="800" fill="#7C3AED">HMAC-SHA256 LIVE</text>
+
+      <text x="20" y="125" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Project ID: PRJ-2026-001</text>
+      <text x="20" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Template-Governed MSA</text>
+      <text x="20" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Slack Channel Provision</text>
+      <text x="20" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Weekly Executive Digest</text>
+
+      <rect x="20" y="215" width="215" height="26" rx="6" fill="#FAF5FF" />
+      <text x="30" y="232" font-family="sans-serif" font-size="10" font-weight="700" fill="#6B21A8">✓ Project 4 Complete</text>
+    </g>
+
+  </g>
+
+  <!-- Bottom Metric Bar -->
+  <g transform="translate(60, 465)">
+    <rect width="1080" height="115" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" filter="url(#liShadow)" />
+    
+    <g transform="translate(30, 25)">
+      <text x="0" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#64748B">VERIFIED TEST SUITE</text>
+      <text x="0" y="52" font-family="sans-serif" font-size="28" font-weight="800" fill="#10B981">19 / 19 Pass</text>
+      <text x="0" y="70" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">100% Automated Coverage</text>
+    </g>
+
+    <line x1="260" y1="20" x2="260" y2="95" stroke="#F1F5F9" stroke-width="2" />
+
+    <g transform="translate(300, 25)">
+      <text x="0" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#64748B">COMMITS PUSHED</text>
+      <text x="0" y="52" font-family="sans-serif" font-size="28" font-weight="800" fill="#4F46E5">30 Commits</text>
+      <text x="0" y="70" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Granular Conventional Commits</text>
+    </g>
+
+    <line x1="530" y1="20" x2="530" y2="95" stroke="#F1F5F9" stroke-width="2" />
+
+    <g transform="translate(570, 25)">
+      <text x="0" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#64748B">WORKFORCE PERSONAS</text>
+      <text x="0" y="52" font-family="sans-serif" font-size="28" font-weight="800" fill="#0F172A">10 Agents</text>
+      <text x="0" y="70" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Narrowly Scoped Responsibilities</text>
+    </g>
+
+    <line x1="800" y1="20" x2="800" y2="95" stroke="#F1F5F9" stroke-width="2" />
+
+    <g transform="translate(840, 25)">
+      <text x="0" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#64748B">STACK &amp; RUNTIME</text>
+      <text x="0" y="50" font-family="sans-serif" font-size="20" font-weight="800" fill="#1E293B">Python 3.12 + FastAPI</text>
+      <text x="0" y="70" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">SQLite WAL • Pydantic V2</text>
+    </g>
+
+  </g>
+</svg>

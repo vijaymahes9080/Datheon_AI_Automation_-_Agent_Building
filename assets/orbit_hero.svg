@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#EFF6FF" />
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.06" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.03" />
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="520" fill="url(#bgGrad)" />
+  <rect width="1200" height="520" fill="none" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Subtle ambient decorative glow spheres in light theme -->
+  <circle cx="150" cy="100" r="120" fill="#E0E7FF" opacity="0.6" filter="url(#softGlow)" />
+  <circle cx="1050" cy="380" r="140" fill="#DBEAFE" opacity="0.6" filter="url(#softGlow)" />
+  <circle cx="600" cy="40" r="90" fill="#CFFAFE" opacity="0.5" filter="url(#softGlow)" />
+
+  <!-- Header Category Badge -->
+  <g transform="translate(60, 48)">
+    <rect width="280" height="32" rx="16" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.2" />
+    <circle cx="18" cy="16" r="5" fill="#4F46E5" />
+    <text x="32" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#4338CA" letter-spacing="0.5">ENTERPRISE AUTOMATION SUITE</text>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <text x="60" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="800" fill="#0F172A" letter-spacing="-1">
+    ORBIT AI Operations Studio
+  </text>
+  <text x="60" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="500" fill="#475569">
+    Autonomous Workforce &amp; Multi-System Business Automation for Agencies and eCommerce
+  </text>
+
+  <!-- Feature Pill Tags -->
+  <g transform="translate(60, 185)">
+    <!-- Pill 1 -->
+    <rect x="0" y="0" width="190" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0" />
+    <circle cx="14" cy="15" r="4" fill="#10B981" />
+    <text x="26" y="20" font-family="sans-serif" font-size="12" font-weight="600" fill="#334155">4 Core Business Systems</text>
+
+    <!-- Pill 2 -->
+    <rect x="202" y="0" width="168" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0" />
+    <circle cx="216" cy="15" r="4" fill="#6366F1" />
+    <text x="228" y="20" font-family="sans-serif" font-size="12" font-weight="600" fill="#334155">10 Agent Personas</text>
+
+    <!-- Pill 3 -->
+    <rect x="382" y="0" width="170" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0" />
+    <circle cx="396" cy="15" r="4" fill="#0284C7" />
+    <text x="408" y="20" font-family="sans-serif" font-size="12" font-weight="600" fill="#334155">Draft-Only Email Shield</text>
+
+    <!-- Pill 4 -->
+    <rect x="564" y="0" width="180" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0" />
+    <circle cx="578" cy="15" r="4" fill="#F59E0B" />
+    <text x="590" y="20" font-family="sans-serif" font-size="12" font-weight="600" fill="#334155">Stripe HMAC Verified</text>
+  </g>
+
+  <!-- Light Theme 4-Card Module Overview Showcase Container -->
+  <g transform="translate(60, 240)">
+    
+    <!-- Module 1: Lead Intelligence -->
+    <g transform="translate(0, 0)" filter="url(#cardShadow)">
+      <rect width="255" height="235" rx="14" fill="url(#cardGrad)" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="18" y="18" width="36" height="36" rx="8" fill="#EEF2FF" />
+      <path d="M28 36 L36 28 L44 36 M36 28 L36 44" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="64" y="34" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">Lead Intelligence</text>
+      <text x="64" y="50" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Revenue Routing</text>
+      
+      <line x1="18" y1="68" x2="237" y2="68" stroke="#F1F5F9" stroke-width="1.2" />
+      
+      <!-- Metrics row -->
+      <rect x="18" y="80" width="219" height="42" rx="8" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="28" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">SCORE</text>
+      <text x="28" y="114" font-family="sans-serif" font-size="14" font-weight="800" fill="#4F46E5">85/100</text>
+      <text x="95" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">PRIORITY</text>
+      <rect x="95" y="101" width="46" height="16" rx="4" fill="#DCFCE7" />
+      <text x="102" y="113" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#15803D">HIGH</text>
+      <text x="160" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">LATENCY</text>
+      <text x="160" y="114" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">42 ms</text>
+
+      <text x="18" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Form &amp; Webhook Ingestion</text>
+      <text x="18" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• AI Sales Talking Points</text>
+      <text x="18" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Airtable &amp; Slack Sync</text>
+      
+      <rect x="18" y="200" width="219" height="22" rx="6" fill="#F1F5F9" />
+      <text x="32" y="215" font-family="sans-serif" font-size="10" font-weight="600" fill="#475569">Target SLA: &lt; 10.0s (Verified)</text>
+    </g>
+
+    <!-- Module 2: Support Intelligence -->
+    <g transform="translate(275, 0)" filter="url(#cardShadow)">
+      <rect width="255" height="235" rx="14" fill="url(#cardGrad)" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="18" y="18" width="36" height="36" rx="8" fill="#EFF6FF" />
+      <path d="M26 30 C26 26 30 24 36 24 C42 24 46 26 46 30 C46 35 36 37 36 41 M36 45 L36 46" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round"/>
+      <text x="64" y="34" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">Support Intelligence</text>
+      <text x="64" y="50" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Email &amp; Policy RAG</text>
+      
+      <line x1="18" y1="68" x2="237" y2="68" stroke="#F1F5F9" stroke-width="1.2" />
+      
+      <rect x="18" y="80" width="219" height="42" rx="8" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="28" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">MODE</text>
+      <rect x="28" y="101" width="82" height="16" rx="4" fill="#FEF3C7" />
+      <text x="34" y="113" font-family="sans-serif" font-size="9" font-weight="700" fill="#B45309">DRAFT-ONLY</text>
+      <text x="135" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">RAG GROUND</text>
+      <text x="135" y="114" font-family="sans-serif" font-size="12" font-weight="700" fill="#10B981">100% Policy</text>
+
+      <text x="18" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• 8 Business Intent Classes</text>
+      <text x="18" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Prompt Injection Defense</text>
+      <text x="18" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Escalation Gatekeeper</text>
+      
+      <rect x="18" y="200" width="219" height="22" rx="6" fill="#F1F5F9" />
+      <text x="32" y="215" font-family="sans-serif" font-size="10" font-weight="600" fill="#475569">Safety: No Autonomous Send</text>
+    </g>
+
+    <!-- Module 3: Invoice Intelligence -->
+    <g transform="translate(550, 0)" filter="url(#cardShadow)">
+      <rect width="255" height="235" rx="14" fill="url(#cardGrad)" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="18" y="18" width="36" height="36" rx="8" fill="#ECFDF5" />
+      <rect x="27" y="26" width="18" height="20" rx="3" stroke="#059669" stroke-width="2" fill="none"/>
+      <line x1="31" y1="31" x2="41" y2="31" stroke="#059669" stroke-width="1.8"/>
+      <line x1="31" y1="36" x2="38" y2="36" stroke="#059669" stroke-width="1.8"/>
+      <text x="64" y="34" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">Invoice Intelligence</text>
+      <text x="64" y="50" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Financial Ops &amp; Audit</text>
+      
+      <line x1="18" y1="68" x2="237" y2="68" stroke="#F1F5F9" stroke-width="1.2" />
+      
+      <rect x="18" y="80" width="219" height="42" rx="8" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="28" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">ARITHMETIC</text>
+      <text x="28" y="114" font-family="sans-serif" font-size="12" font-weight="700" fill="#059669">Strict &plusmn;$0.05</text>
+      <text x="125" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">DEDUPLICATION</text>
+      <text x="125" y="114" font-family="sans-serif" font-size="12" font-weight="700" fill="#0F172A">SHA-256 Hash</text>
+
+      <text x="18" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Secure PDF Extraction</text>
+      <text x="18" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Variance Flag &amp; Lockout</text>
+      <text x="18" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Google Sheets Export</text>
+      
+      <rect x="18" y="200" width="219" height="22" rx="6" fill="#F1F5F9" />
+      <text x="32" y="215" font-family="sans-serif" font-size="10" font-weight="600" fill="#475569">Discrepancy: Auto Gatekeeper</text>
+    </g>
+
+    <!-- Module 4: Enterprise Orchestration -->
+    <g transform="translate(825, 0)" filter="url(#cardShadow)">
+      <rect width="255" height="235" rx="14" fill="url(#cardGrad)" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect x="18" y="18" width="36" height="36" rx="8" fill="#FAF5FF" />
+      <circle cx="36" cy="36" r="10" stroke="#7C3AED" stroke-width="2" fill="none"/>
+      <circle cx="36" cy="36" r="4" fill="#7C3AED"/>
+      <text x="64" y="34" font-family="sans-serif" font-size="15" font-weight="700" fill="#0F172A">Multi-Agent Ops</text>
+      <text x="64" y="50" font-family="sans-serif" font-size="11" font-weight="500" fill="#64748B">Enterprise Orchestration</text>
+      
+      <line x1="18" y1="68" x2="237" y2="68" stroke="#F1F5F9" stroke-width="1.2" />
+      
+      <rect x="18" y="80" width="219" height="42" rx="8" fill="#F8FAFC" stroke="#F1F5F9" />
+      <text x="28" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">STRIPE HMAC</text>
+      <text x="28" y="114" font-family="sans-serif" font-size="12" font-weight="700" fill="#7C3AED">SHA-256 Live</text>
+      <text x="130" y="97" font-family="sans-serif" font-size="10" font-weight="600" fill="#64748B">TEST SUITE</text>
+      <text x="130" y="114" font-family="sans-serif" font-size="12" font-weight="700" fill="#10B981">19/19 Pass</text>
+
+      <text x="18" y="145" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Stable Project ID Allocator</text>
+      <text x="18" y="165" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Template-Governed MSA</text>
+      <text x="18" y="185" font-family="sans-serif" font-size="11" font-weight="500" fill="#334155">• Slack Channel Provisioning</text>
+      
+      <rect x="18" y="200" width="219" height="22" rx="6" fill="#F1F5F9" />
+      <text x="32" y="215" font-family="sans-serif" font-size="10" font-weight="600" fill="#475569">Digest: Stored Metrics Only</text>
+    </g>
+
+  </g>
+</svg>
